@@ -1,10 +1,38 @@
 #!/usr/bin/php
 <?php
 
-print_r($argv);
+define('ROOT', realpath(__DIR__ . '/../../../'));
+define('SELF', realpath(__DIR__ . '/../'));
 
-echo "\n\n";
+$args = array (
+	'-Dsolr.solr.home' => ROOT,
+	'-jar' => SELF . '/solr/start.jar'
+);
 
-echo __DIR__;
+for ($i = 1; $i < $argc; $i++)
+{
+	$split = explode('=', $argv[$i]);
 
-echo "\n\n";
+	if ($argv[$i] === '-jar')
+	{
+		// Hardcoded look for jar argument.
+		// TODO find better way to do this?
+
+		$argv['-jar'] = $argv[++$i];
+		continue;
+	}
+
+	$args[$split[0]] = isset($split[1]) ? $split[1] : true;
+}
+
+
+$command = 'java';
+
+foreach ($args as $key => $val)
+{
+	$operator = $key[1] === 'D' ? '=' : ' ';
+
+	$command .= ' ' . $key . $operator . $val;
+}
+
+echo $command . "\n\n";
