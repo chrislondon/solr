@@ -1,0 +1,17 @@
+{
+    "name": "chrislondon/solr",
+    "description": "Composer wrapper to incorporate solr into a PHP project",
+	"version": "0.0.1-dev",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Chris London",
+            "email": "me@chrislondon.co",
+	        "homepage": "http://www.chrislondon.co"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+    },
+	"bin": ["bin/solr"]
+}
