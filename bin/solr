@@ -2,3 +2,9 @@
 <?php
 
 print_r($argv);
+
+echo "\n\n";
+
+echo __DIR__;
+
+echo "\n\n";
